@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="canonical" href="https://refinizmiabiyuna.netlify.app/">
+    <meta property="og:url" content="https://refinizmiabiyuna.netlify.app/">
+    
+    <meta name="description" content="Portofolio Profesional Refin Izmi Abiyuna - Sistem Informasi. Menampilkan proyek pengembangan web, keahlian analisis sistem, dan sertifikasi IT terbaru.">
+    <meta name="keywords" content="Refin Izmi Abiyuna, Refin Izmi, Portofolio IT, Sistem Informasi, Web Developer Yogyakarta, Developer Indonesia, Sistem Informasi UTY">
+    <meta name="author" content="Refin Izmi Abiyuna">
+
+    <!-- JSON-LD Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Refin Izmi Abiyuna",
+      "url": "https://refinizmiabiyuna.netlify.app/",
+      "image": "https://refinizmiabiyuna.netlify.app/assets/images/profil/fotoporto.png",
+      "jobTitle": "Web Developer",
+      "alumniOf": "Universitas Teknologi Yogyakarta",
+      "sameAs": [
+        "https://www.linkedin.com/in/refin-izmi-abiyuna",
+        "https://instagram.com/finnizmia",
+        "https://github.com/refinizmi",
+        "https://www.tiktok.com/@finn2710"
+      ]
+    }
+    </script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Portofolio | Refin Izmi Abiyuna">
+    <meta property="og:description" content="Halo! Saya Refin, lulusan Sistem Informasi yang fokus pada pengembangan solusi digital efisien. Lihat proyek terbaru saya di sini.">
+    <meta property="og:image" content="https://refinizmiabiyuna.netlify.app/assets/images/profil/fotoporto.png">
+
+    <title>Portofolio | Refin Izmi Abiyuna</title>
+    
+    <!-- Critical Assets Preload -->
+    <link rel="preload" href="assets/css/style.css" as="style">
+    <link rel="preload" href="assets/images/profil/fotoporto.png" as="image" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Production Tailwind CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Critical CSS for LCP */
+        .hero-gradient { background: linear-gradient(to right, #c026d3, #22d3ee); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .dark .hero-bg { background-color: #030712; }
+        .hero-bg { background-color: #f9fafb; }
+        
+        .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+        .scrollbar-thumb-gray-400::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 10px; }
+        .dark .scrollbar-thumb-gray-700::-webkit-scrollbar-thumb { background-color: #374151; }
+        .scrollbar-track-transparent::-webkit-scrollbar-track { background-color: transparent !important; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        input:-webkit-autofill, textarea:-webkit-autofill {
+            -webkit-text-fill-color: white !important;
+            -webkit-box-shadow: 0 0 0px 1000px #1e293b inset !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        /* Image preview dialogs */
+        dialog#project-image-modal, dialog#cert-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            margin: auto;
+            padding: 1rem;
+            border: none;
+            background: transparent;
+            width: 100%;
+            height: 100%;
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+        dialog#project-image-modal[open], dialog#cert-modal[open] {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        dialog#project-image-modal::backdrop, dialog#cert-modal::backdrop {
+            background: rgba(0, 0, 0, 0.9);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Skill badges - official brand colors */
+        .skill-icon { color: var(--brand, #4b5563); }
+        .skill-badge:hover {
+            box-shadow: 0 20px 25px -5px color-mix(in srgb, var(--brand, #4b5563) 70%, transparent),
+                        0 8px 10px -6px color-mix(in srgb, var(--brand, #4b5563) 70%, transparent);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased !bg-gray-50 dark:!bg-gray-950 !text-gray-900 dark:!text-gray-100">
+
+    <!-- NAVBAR (DYNAMIC ISLAND) -->
+    <nav>
+        <div class="fixed bottom-10 md:bottom-auto md:top-5 left-1/2 -translate-x-1/2 max-w-[98vw] md:max-w-[95vw] w-auto rounded-full backdrop-blur-sm !bg-zinc-100/50 dark:!bg-neutral-800/50 shadow-xl border border-neutral-400/30 dark:border-zinc/30 z-50 px-3 md:px-6 py-2 flex items-center justify-center space-x-2 md:space-x-6 transition-all duration-300 ease-in-out hover:!bg-zinc-200/70 dark:hover:!bg-neutral-900/70 hover:scale-105 hover:shadow-2xl hover:border-blue-400 dark:hover:border-purple-600">
+            <div class="flex items-center space-x-2 md:space-x-6 text-[10px] md:text-base">
+                <a href="#home" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_home">Beranda</a>
+                <a href="#about" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_about">Tentang</a>
+                <a href="#skills" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_skills">Skill</a>
+                <a href="#projects" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_projects">Proyek</a>
+                <a href="#contact" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_contact">Kontak</a>
+            </div>
+
+            <div class="flex items-center space-x-1 md:space-x-2 border-l border-gray-300 dark:border-gray-700 pl-2 md:pl-4">
+                <!-- Language Toggle Button (Pill Style) -->
+                <div class="flex bg-gray-200 dark:bg-gray-800 rounded-full p-0.5 relative w-12 md:w-16 h-6 md:h-8 items-center justify-between shadow-inner">
+                    <button onclick="changeLang('id')" id="lang-id" class="relative z-10 w-5 md:w-7 h-5 md:h-6 flex items-center justify-center text-[8px] md:text-[10px] font-bold transition-all duration-300" aria-label="Switch to Indonesian">ID</button>
+                    <button onclick="changeLang('en')" id="lang-en" class="relative z-10 w-5 md:w-7 h-5 md:h-6 flex items-center justify-center text-[8px] md:text-[10px] font-bold transition-all duration-300" aria-label="Switch to English">EN</button>
+                    <div id="lang-indicator" class="absolute top-0.5 bottom-0.5 w-5 md:w-7 bg-blue-600 dark:bg-purple-600 rounded-full transition-all duration-300 ease-in-out"></div>
+                </div>
+
+                <button id="theme-toggle" class="p-1 md:p-1.5 rounded-full bg-sky-100 dark:bg-gray-800 hover:scale-110 hover:bg-sky-200 dark:hover:bg-gray-600 transition shadow-sm" aria-label="Toggle Theme">
+                    <svg id="icon-sun" class="h-5 w-5 !block dark:!hidden text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg id="icon-moon" class="h-5 w-5 !hidden dark:!block text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M17.293 13.293a8 8 0 01-10.586-10.586 8 8 0 1010.586 10.586z" clip-rule="evenodd"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+    <!-- SECTION 1: HOME -->
+    <section id="home" class="min-h-screen flex items-start md:items-center justify-center bg-gray-50 dark:bg-gray-950 pt-3 md:pt-0">
+        <div class="container mx-auto px-4 md:px-8 flex items-start md:items-center justify-center">
+            <div class="flex flex-col md:flex-row w-full max-w-7xl items-center">
+                <div class="w-full md:w-7/12 p-4 md:p-8 order-2 md:order-1 text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 dark:text-white leading-tight">
+                        <span data-i18n="hero_greet">Halo, Saya</span> 
+                        <span class="hero-gradient">Refin Izmi Abiyuna</span>
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 text-justify" data-i18n="hero_desc">Lulusan Sistem Informasi...</p>
+                    <a href="#contact" class="mt-8 inline-block px-8 py-3 bg-blue-700 text-white font-semibold rounded-full hover:scale-105 hover:bg-purple-700 transition duration-300" data-i18n="hero_cta">Mau buat website?</a>
+                </div>
+                <div class="w-full md:w-5/12 p-4 md:p-8 order-1 md:order-2 relative">
+                    <img src="assets/images/profil/fotoporto.png" alt="Refin Izmi Abiyuna - Profil" width="400" height="400" class="w-full h-auto object-cover rounded-3xl lg:rounded-[4rem] mx-auto z-10 relative -mt-4 md:-mt-40 mb-[-10px] md:mb-[-30px]" loading="eager" decoding="async" fetchpriority="high">
+                    <div class="absolute inset-x-0 bottom-0 h-1/2 z-20 bg-gradient-to-t from-gray-50 dark:from-gray-950 to-transparent"></div>
+                    <div class="absolute inset-x-0 bottom-1 z-30 flex flex-col items-center justify-end">
+                        <p class="text-sm font-semibold text-gray-600 dark:text-gray-400">My Social Media</p>
+                        <div class="flex space-x-4">
+                            <a href="https://instagram.com/finnizmia" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-pink-600 transition transform hover:scale-110 text-2xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@finn2710" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-black dark:hover:text-white transition transform hover:scale-110 text-2xl" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.linkedin.com/in/refin-izmi-abiyuna" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-700 transition transform hover:scale-110 text-2xl" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://x.com/moonlightttzzz" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition transform hover:scale-110 text-2xl" aria-label="Twitter X"><i class="fab fa-x-twitter"></i></a>
+                            <a href="https://wa.me/6282244912640" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-green-500 transition transform hover:scale-110 text-2xl" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="mailto:refin555@gmail.com" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-red-600 transition transform hover:scale-110 text-2xl" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ABOUT -->
+    <section id="about" class="py-12 md:py-24 bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex flex-col max-w-5xl mx-auto items-center text-center">
+                <div class="p-4 md:p-8 text-center">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-600" data-i18n="about_title">Tentang Saya</h2>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto mt-4 p-4 md:p-10">
+                <div class="md:col-span-1">
+                    <h6 class="text-3xl font-semibold mb-3 text-gray-800 dark:text-white" data-i18n="about_edu">Pendidikan</h6>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 text-justify leading-relaxed" data-i18n="about_edu_desc">Deskripsi pendidikan...</p>
+                    <div class="mt-4">
+                        <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start space-x-3">
+                                <i class="fas fa-graduation-cap text-lg mt-1 text-blue-600 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-semibold text-lg text-gray-800 dark:text-white">Universitas Teknologi Yogyakarta</p>
+                                    <p class="text-m">Sistem Informasi, 2021 - 2025</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i class="fas fa-star text-lg mt-1 text-yellow-600 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-semibold text-lg text-gray-800 dark:text-white" data-i18n="ipk_label">IPK</p>
+                                    <p class="text-m" data-i18n="ipk_value">Nilai Akhir: 3.44 dari 4.00</p>
+                                </div>
+                            </li>
+                            <li class="flex justify-center md:justify-start">
+                                <a href="assets/document/CV_RefinIzmiAbiyuna.pdf" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block px-8 py-3 bg-blue-700 text-white font-semibold rounded-full hover:scale-105 hover:bg-purple-700 transition duration-300 shadow-lg" data-i18n="about_cv">Download CV</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-3xl font-semibold text-gray-800 dark:text-white text-center" data-i18n="cert_title">Sertifikat</h3>
+                    <div class="relative max-w-lg md:max-w-xl mx-auto">
+                        <div id="cert-slider" class="flex overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent cursor-grab active:cursor-grabbing select-none p-2 md:p-4">
+                            <!-- Cert 1 -->
+                            <div class="flex-shrink-0 w-full snap-center px-2">
+                                <div class="bg-transparent rounded-xl overflow-hidden transition-all duration-300 hover:shadow-blue-500/20 hover:scale-[1.01] cursor-pointer" role="button" tabindex="0" onclick="openCertModal('1', 'Intro to Data Analytics')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                                    <div class="h-56 sm:h-64 w-full overflow-hidden bg-transparent">
+                                        <img src="assets/images/sertifikat/1.jpg" alt="Sertifikat Intro to Data Analytics - Refin Izmi Abiyuna" width="400" height="250" class="w-full h-full object-contain p-2 pointer-events-none" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="p-5 bg-transparent text-center">
+                                        <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-white">Intro to Data Analytics</h3>
+                                        <span class="text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2"><i class="fas fa-search-plus"></i><span data-i18n="view_detail">Lihat Detail</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cert 2 -->
+                            <div class="flex-shrink-0 w-full snap-center px-2">
+                                <div class="bg-transparent rounded-xl overflow-hidden transition-all duration-300 hover:shadow-blue-500/20 hover:scale-[1.01] cursor-pointer" role="button" tabindex="0" onclick="openCertModal('2', 'Intro to Software Engineering')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                                    <div class="h-56 sm:h-64 w-full overflow-hidden bg-transparent">
+                                        <img src="assets/images/sertifikat/2.jpg" alt="Sertifikat Refin Izmi Abiyuna" class="w-full h-full object-contain p-2 pointer-events-none" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="p-5 bg-transparent text-center">
+                                        <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-white">Intro to Software Engineering</h3>
+                                        <span class="text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2"><i class="fas fa-search-plus"></i><span data-i18n="view_detail">Lihat Detail</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cert 3 -->
+                            <div class="flex-shrink-0 w-full snap-center px-2">
+                                <div class="bg-transparent rounded-xl overflow-hidden transition-all duration-300 hover:shadow-blue-500/20 hover:scale-[1.01] cursor-pointer" role="button" tabindex="0" onclick="openCertModal('3', 'Machine Learning Professional')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                                    <div class="h-56 sm:h-64 w-full overflow-hidden bg-transparent">
+                                        <img src="assets/images/sertifikat/3.jpg" alt="Sertifikat Refin Izmi Abiyuna" class="w-full h-full object-contain p-2 pointer-events-none" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="p-5 bg-transparent text-center">
+                                        <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-white">Machine Learning Professional</h3>
+                                        <span class="text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2"><i class="fas fa-search-plus"></i><span data-i18n="view_detail">Lihat Detail</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cert 4 -->
+                            <div class="flex-shrink-0 w-full snap-center px-2">
+                                <div class="bg-transparent rounded-xl overflow-hidden transition-all duration-300 hover:shadow-blue-500/20 hover:scale-[1.01] cursor-pointer" role="button" tabindex="0" onclick="openCertModal('4', 'Data Engineering Professional')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                                    <div class="h-56 sm:h-64 w-full overflow-hidden bg-transparent">
+                                        <img src="assets/images/sertifikat/4.jpg" alt="Sertifikat Refin Izmi Abiyuna" class="w-full h-full object-contain p-2 pointer-events-none" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="p-5 bg-transparent text-center">
+                                        <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-white">Data Engineering Professional</h3>
+                                        <span class="text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2"><i class="fas fa-search-plus"></i><span data-i18n="view_detail">Lihat Detail</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cert 5 -->
+                            <div class="flex-shrink-0 w-full snap-center px-2">
+                                <div class="bg-transparent rounded-xl overflow-hidden transition-all duration-300 hover:shadow-blue-500/20 hover:scale-[1.01] cursor-pointer" role="button" tabindex="0" onclick="openCertModal('5', 'Intro to Product Management')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                                    <div class="h-56 sm:h-64 w-full overflow-hidden bg-transparent">
+                                        <img src="assets/images/sertifikat/5.jpg" alt="Sertifikat Refin Izmi Abiyuna" class="w-full h-full object-contain p-2 pointer-events-none" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="p-5 bg-transparent text-center">
+                                        <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-white">Intro to Product Management</h3>
+                                        <span class="text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2"><i class="fas fa-search-plus"></i><span data-i18n="view_detail">Lihat Detail</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cert 6 -->
+                            <div class="flex-shrink-0 w-full snap-center px-2">
+                                <div class="bg-transparent rounded-xl overflow-hidden transition-all duration-300 hover:shadow-blue-500/20 hover:scale-[1.01] cursor-pointer" role="button" tabindex="0" onclick="openCertModal('6', 'Webinar Cybersecurity Vulnerability Assessment')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                                    <div class="h-56 sm:h-64 w-full overflow-hidden bg-transparent">
+                                        <img src="assets/images/sertifikat/6.jpg" alt="Sertifikat Refin Izmi Abiyuna" class="w-full h-full object-contain p-2 pointer-events-none" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="p-5 bg-transparent text-center">
+                                        <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-white">Webinar Cybersecurity</h3>
+                                        <span class="text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2"><i class="fas fa-search-plus"></i><span data-i18n="view_detail">Lihat Detail</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cert 7 -->
+                            <div class="flex-shrink-0 w-full snap-center px-2">
+                                <div class="bg-transparent rounded-xl overflow-hidden transition-all duration-300 hover:shadow-blue-500/20 hover:scale-[1.01] cursor-pointer" role="button" tabindex="0" onclick="openCertModal('7', 'Exploring the World of Technology Industry')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                                    <div class="h-56 sm:h-64 w-full overflow-hidden bg-transparent">
+                                        <img src="assets/images/sertifikat/7.jpg" alt="Sertifikat Refin Izmi Abiyuna" class="w-full h-full object-contain p-2 pointer-events-none" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="p-5 bg-transparent text-center">
+                                        <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-white">Exploring Tech Industry</h3>
+                                        <span class="text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2"><i class="fas fa-search-plus"></i><span data-i18n="view_detail">Lihat Detail</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPERIENCE TIMELINE -->
+            <div class="mt-16 md:mt-24 max-w-4xl mx-auto px-4">
+                <h6 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white">
+                    <span class="border-b-4 border-blue-600 pb-2" data-i18n="about_exp">Pengalaman</span>
+                </h6>
+                <div class="relative border-l-2 border-gray-200 dark:border-gray-800 ml-4 md:ml-0">
+                    <!-- Exp 1 -->
+                    <div class="mb-12 ml-6 md:ml-12 relative">
+                        <div class="absolute -left-[31px] md:-left-[55px] mt-1.5 w-4 h-4 rounded-full bg-blue-600 border-4 border-white dark:border-gray-950 shadow-md"></div>
+                        <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                <h4 class="text-xl font-bold text-gray-800 dark:text-white" data-i18n="exp_1_title">Staff Business Development (IT Development)</h4>
+                                <span class="text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full w-fit mt-2 md:mt-0" data-i18n="exp_1_date">Mei 2026 - Sekarang</span>
+                            </div>
+                            <p class="text-lg font-medium text-gray-600 dark:text-gray-400 mb-4" data-i18n="exp_1_comp">Zipzap Corporation</p>
+                            <p class="text-gray-600 dark:text-gray-400 text-justify leading-relaxed" data-i18n="exp_1_desc">Deskripsi...</p>
+                        </div>
+                    </div>
+                    <!-- Exp 2 -->
+                    <div class="ml-6 md:ml-12 relative">
+                        <div class="absolute -left-[31px] md:-left-[55px] mt-1.5 w-4 h-4 rounded-full bg-cyan-600 border-4 border-white dark:border-gray-950 shadow-md"></div>
+                        <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                <h4 class="text-xl font-bold text-gray-800 dark:text-white" data-i18n="exp_2_title">IT Developer</h4>
+                                <span class="text-sm font-semibold text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/30 px-3 py-1 rounded-full w-fit mt-2 md:mt-0" data-i18n="exp_2_date">November 2025 - Mei 2026</span>
+                            </div>
+                            <p class="text-lg font-medium text-gray-600 dark:text-gray-400 mb-4" data-i18n="exp_2_comp">Zipzap Corporation - Maganghub Kemnaker</p>
+                            <p class="text-gray-600 dark:text-gray-400 text-justify leading-relaxed" data-i18n="exp_2_desc">Deskripsi...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SKILLS -->
+    <section id="skills" class="py-12 md:py-20 justify-center bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center"><span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-cyan-400" data-i18n="skills_title">Skill & Teknologi</span></h2>
+            <div class="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#777BB4"><span class="skill-icon text-3xl"><i class="fab fa-php"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">PHP</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#E34F26"><span class="skill-icon text-3xl"><i class="fab fa-html5"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">HTML</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#1572B6"><span class="skill-icon text-3xl"><i class="fab fa-css3-alt"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">CSS</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#F7DF1E"><span class="skill-icon text-3xl"><i class="fab fa-js"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">JavaScript</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#3178C6"><span class="skill-icon text-3xl"><i class="fas fa-code"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">TypeScript</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#61DAFB"><span class="skill-icon text-3xl"><i class="fab fa-react"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">React JS</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#FF2D20"><span class="skill-icon text-3xl"><i class="fab fa-laravel"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Laravel</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#38BDF8"><span class="skill-icon text-3xl"><i class="fas fa-wind"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Tailwind CSS</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#7952B3"><span class="skill-icon text-3xl"><i class="fab fa-bootstrap"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Bootstrap CSS</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#F05032"><span class="skill-icon text-3xl"><i class="fab fa-git-alt"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Git</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#4479A1"><span class="skill-icon text-3xl"><i class="fas fa-database"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">MySQL</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#0F9D58"><span class="skill-icon text-3xl"><i class="fas fa-table"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Google Sheets API</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#21759B"><span class="skill-icon text-3xl"><i class="fab fa-wordpress"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">WordPress</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#4285F4"><span class="skill-icon text-3xl"><i class="fab fa-google"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Google Apps Script (GAS)</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#246FDB"><span class="skill-icon text-3xl"><i class="fas fa-tags"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Google Tag Manager</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#EA4335"><span class="skill-icon text-3xl"><i class="fas fa-envelope"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Google Workspace Mail API</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#8E75B2"><span class="skill-icon text-3xl"><i class="fas fa-robot"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Gemini AI API</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#A259FF"><span class="skill-icon text-3xl"><i class="fab fa-figma"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Figma</p></div>
+                <div class="skill-badge flex items-center w-60 space-x-3 bg-white dark:bg-gray-900 px-6 py-3 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 border border-gray-200 dark:border-gray-800" style="--brand:#7D2AE7"><span class="skill-icon text-3xl"><i class="fas fa-palette"></i></span><p class="text-xl font-medium text-gray-800 dark:text-gray-200">Canva</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PROJECTS -->
+    <section id="projects" class="py-12 md:py-20 justify-center bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 md:px-9 max-w-7xl">
+            <h2 class="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-700" data-i18n="project_title">Proyek</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mx-auto mb-4 text-justify leading-relaxed" data-i18n="project_desc_top">
+                Berikut adalah beberapa proyek yang telah saya kembangkan...
+            </p>
+            <div class="relative">
+                <div id="project-slider" class="flex space-x-4 p-4 overflow-x-scroll pb-6 scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent cursor-grab active:cursor-grabbing select-none">
+                    <!-- Project 1 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/webzipzap.png', 'Landing Page & Admin Panel Zipzap')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/webzipzap.png" alt="Proyek Website Zipzap - Refin Izmi Abiyuna" width="500" height="300" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Landing Page & Admin Panel Zipzap</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_1_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://konveksijakarta.co.id/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/lpkaoszipzap.png', 'Landing Page Kaos Zipzap')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/lpkaoszipzap.png" alt="Proyek Web Portofolio - Refin Izmi Abiyuna" width="500" height="300" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Landing Page Kaos Zipzap</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_2_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://konveksijakarta.co.id/konveksi-kaos-jakarta" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/lppolozipzap.png', 'Landing Page Polo Zipzap')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/lppolozipzap.png" alt="Landing Page Polo Zipzap - Refin Izmi Abiyuna" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Landing Page Polo Zipzap</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_3_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://konveksijakarta.co.id/konveksi-polo-jakarta" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/lpkaoskaliber.png', 'Landing Page Kaos Kaliber')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/lpkaoskaliber.png" alt="Landing Page Kaos Kaliber - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Landing Page Kaos Kaliber Garment</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_4_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://zipzap.co.id/landing-page-kaos-full-coding/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 5 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/lppolokaliber.png', 'Landing Page Polo Kaliber')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/lppolokaliber.png" alt="Landing Page Polo Kaliber - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Landing Page Polo Kaliber Garment</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_5_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://zipzap.co.id/landing-page-polo-full-coding/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 6 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/skoringdisc.png', 'Tools Skoring DISC')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/skoringdisc.png" alt="Tools Skoring DISC - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Tools Skoring DISC Zipzap</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_6_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://zipzap.co.id/test-disc/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 7 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/cryon.png', 'Cryon Warranty System')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/cryon.png" alt="Cryon Warranty System - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Cryon Warranty System</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_7_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <button onclick="showPrivateNotice()" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-red-500 transition duration-200 group"><i class="fas fa-lock text-xl group-hover:shake transition-transform"></i><span class="text-sm font-semibold">Demo</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 8 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/webtoolscs.png', 'Web Tools CS Zipzap')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/webtoolscs.png" alt="Web Tools CS Zipzap - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Web Tools Customer Service Zipzap</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_8_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://zipzap.co.id/tools/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 9 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/SIabsensi.png', 'SI Absensi & Gaji')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/SIabsensi.png" alt="Sistem Informasi Absensi - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Sistem Informasi Absensi & Gaji</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_9_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <button onclick="showPrivateNotice()" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-red-500 transition duration-200 group"><i class="fas fa-lock text-xl group-hover:shake transition-transform"></i><span class="text-sm font-semibold">Demo</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 10 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/bubejo.png', 'SI Penjualan Bubejo')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/bubejo.png" alt="SI Penjualan Bubejo - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">SI Penjualan Buah Beku Bubejo</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_10_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <button onclick="showPrivateNotice()" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-red-500 transition duration-200 group"><i class="fas fa-lock text-xl group-hover:shake transition-transform"></i><span class="text-sm font-semibold">Demo</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center mt-4 text-sm text-gray-500 dark:text-gray-400">
+                    &larr; Geser ke samping untuk melihat proyek lainnya &rarr;
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CONTACT -->
+    <section id="contact" class="py-12 md:py-20 bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <h2 class="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-cyan-400" data-i18n="contact_title">Kontak</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold mb-6" data-i18n="contact_subtitle">Kirim Pesan Langsung</h3>
+                    <form id="contactForm">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium" data-i18n="contact_name">Nama</label>
+                            <input type="text" id="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-800 rounded-md dark:bg-slate-800/50 outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium" data-i18n="contact_email">Email</label>
+                            <input type="email" id="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-800 rounded-md dark:bg-slate-800/50 outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium" data-i18n="contact_message">Pesan</label>
+                            <textarea id="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-800 rounded-md dark:bg-slate-800/50 outline-none focus:ring-2 focus:ring-indigo-500 transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition" data-i18n="contact_btn">Kirim Pesan</button>
+                    </form>
+                </div>
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-xl border border-gray-100 dark:border-gray-800 h-full">
+                    <h3 class="text-2xl font-semibold mb-6" data-i18n="contact_info">Info Lain</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start"><i class="fab fa-whatsapp text-2xl text-indigo-500 mr-3"></i><div><p class="font-medium">Telepon / WhatsApp</p><a href="https://wa.me/6282244912640" class="text-indigo-600 dark:text-purple-600 hover:underline">+62 822 4491 2640</a></div></div>
+                        <div class="flex items-start"><i class="fas fa-envelope text-xl text-indigo-500 mr-3"></i><div><p class="font-medium">Email</p><a href="mailto:refin555@gmail.com" class="text-indigo-600 dark:text-purple-600 hover:underline">refin555@gmail.com</a></div></div>
+                    </div>
+                    <hr class="my-6 border-gray-200 dark:border-gray-800">
+                    <h4 class="text-xl font-semibold mb-4">Jaringan Profesional:</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/refin-izmi-abiyuna" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-600 transition"><i class="fab fa-linkedin text-4xl"></i></a>
+                        <a href="mailto:refin555@gmail.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-envelope text-4xl"></i></a>
+                        <a href="https://wa.me/6282244912640" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-500 transition"><i class="fab fa-whatsapp text-4xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+    <footer class="text-center py-6 border-t dark:border-gray-700">
+        <p class="text-sm text-gray-600 dark:text-gray-400">© <span id="year"></span> Refin Izmi Abiyuna. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modals & Toasts -->
+    <div id="toast" class="fixed top-5 right-5 z-[200] hidden transform transition-all duration-300 translate-y-[-20px] opacity-0">
+        <div class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow-2xl flex items-center space-x-3"><i class="fab fa-whatsapp text-xl"></i><span data-i18n="toast_wa">Mengarahkan ke WhatsApp...</span></div>
+    </div>
+    
+    <dialog id="project-image-modal" aria-label="Detail Proyek" onclick="if(event.target===this)closeProjectModal()" onkeydown="if(event.key==='Escape')closeProjectModal()"><div class="relative max-w-5xl w-full flex flex-col items-center" onclick="event.stopPropagation()" onkeydown="event.stopPropagation()"><button type="button" class="absolute -top-12 right-0 text-white text-4xl hover:text-red-500" onclick="closeProjectModal()" aria-label="Tutup">&times;</button><img id="modal-project-img" class="w-full max-h-[85vh] object-contain rounded-lg" alt=""><p id="modal-project-title" class="mt-4 text-white text-xl font-bold"></p></div></dialog>
+
+    <dialog id="cert-modal" aria-label="Detail Sertifikat" onclick="if(event.target===this)closeCertModal()" onkeydown="if(event.key==='Escape')closeCertModal()"><div class="max-w-4xl mx-auto relative" onclick="event.stopPropagation()" onkeydown="event.stopPropagation()"><button type="button" class="absolute -top-10 right-0 text-white text-3xl" onclick="closeCertModal()" aria-label="Tutup">&times;</button><img id="modal-cert-img" class="w-full rounded-lg shadow-2xl" alt=""><p id="modal-cert-title" class="mt-4 text-white text-center font-semibold"></p></div></dialog>
+
+    <!-- Asynchronous CSS Loading -->
+    <script>
+        window.addEventListener('load', () => {
+            const fa = document.createElement('link');
+            fa.rel = 'stylesheet';
+            fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+            document.head.appendChild(fa);
+        });
+    </script>
+
+    <!-- MAIN JAVASCRIPT LOGIC -->    <script>
+        const translations={id:{nav_home:'Beranda',nav_about:'Tentang',nav_skills:'Skill',nav_projects:'Proyek',nav_contact:'Kontak',skills_title:'Skill & Teknologi',hero_greet:'Halo, Saya',hero_cta:'Mau buat website?',about_title:'Tentang Saya',about_edu:'Pendidikan',about_cv:'Download CV',about_exp:'Pengalaman',view_detail:'Lihat Detail',contact_title:'Kontak',contact_subtitle:'Kirim Pesan Langsung',contact_name:'Nama Lengkap',contact_email:'Email',contact_message:'Pesan',contact_btn:'Kirim Pesan',contact_info:'Informasi Lain',toast_wa:'Mengarahkan ke WhatsApp...',project_title:'Proyek',ipk_label:'Indeks Prestasi Kumulatif (IPK)',ipk_value:'Nilai Akhir: 3.44 dari 4.00',hero_desc:'Lulusan Sistem Informasi yang memiliki semangat penuh dalam menggabungkan teknologi dan strategi bisnis untuk menciptakan solusi digital yang efisien dan berdampak.',about_edu_desc:'Saya adalah lulusan Sistem Informasi dari Universitas Teknologi Yogyakarta, tempat saya mengasah pemahaman mendalam tentang integrasi teknologi dan strategi bisnis.',exp_1_title:'Staff Business Development (IT Development)',exp_1_comp:'Zipzap Corporation',exp_1_date:'Mei 2026 - Sekarang',exp_1_desc:'• Melanjutkan tanggung jawab pengembangan sistem dari posisi sebelumnya dengan cakupan proyek yang lebih luas.<br>• Membangun Website Kaliber, Landing Page Zipzap Garment, dan Landing Page Kaliber Garment menggunakan Laravel, JavaScript, dan Tailwind CSS.<br>• Menangani maintenance, bug fixing, dan input laporan performa iklan harian untuk mendukung tim marketing.<br>• Menyusun laporan progres mingguan sebagai bentuk koordinasi lintas tim.',exp_2_title:'IT Developer',exp_2_comp:'Zipzap Corporation - Maganghub Kemnaker',exp_2_date:'November 2025 - Mei 2026',exp_2_desc:'• Mengembangkan dan memelihara sistem absensi karyawan berbasis web untuk memantau kehadiran secara real-time, menggantikan layanan absensi pihak ketiga dan menghemat biaya operasional ±Rp2.000.000/tahun.<br>• Merancang dan membangun 3 internal tools untuk tim Customer Service (kalkulator harga produk, kalkulator printing sablon, cek stok kain) yang mempercepat waktu respons ke pelanggan dari 5+ menit menjadi kurang dari 1 menit.<br>• Membangun sistem pelaporan iklan berbasis Gemini AI yang mengotomasi ekstraksi data dari screenshot laporan harian, menggantikan proses input manual tim marketing.<br>• Mengelola dan mengoptimalkan landing page bisnis untuk mendukung kampanye pemasaran digital perusahaan.<br>• Melakukan maintenance, bug fixing, dan optimasi performa sistem secara berkala.',project_desc_top:'Berikut adalah beberapa proyek yang telah saya kembangkan. Proyek-proyek ini menunjukkan kemampuan saya dalam menerapkan berbagai teknologi.',project_1_desc:'Website profil perusahaan konveksi yang dilengkapi dengan sistem admin panel untuk pengelolaan konten dan katalog produk secara dinamis.',project_2_desc:'Halaman penawaran khusus untuk produk kaos dengan optimasi konversi, desain responsif, dan performa tinggi.',project_3_desc:'Halaman landing untuk produk polo shirt yang fokus pada user experience dan kecepatan akses untuk meningkatkan closing rate.',project_4_desc:'Proyek landing page kaos untuk brand Kaliber Garment dengan desain modern menggunakan teknik full coding untuk optimasi SEO.',project_5_desc:'Landing page eksklusif untuk produk polo Kaliber Garment dengan integrasi formulir pemesanan yang efisien.',project_6_desc:'Aplikasi web untuk perhitungan skor psikotes DISC secara otomatis, memudahkan tim HR dalam analisis kepribadian karyawan.',project_7_desc:'Sistem manajemen klaim garansi produk yang terintegrasi dengan database untuk validasi keaslian produk secara sistematis.',project_8_desc:'Kumpulan alat bantu internal seperti kalkulator harga dan generator template pesan untuk mempercepat alur kerja tim CS.',project_9_desc:'Platform internal untuk manajemen kehadiran karyawan dan penghitungan payroll otomatis berbasis web.',project_10_desc:'Sistem E-commerce lengkap dengan fitur manajemen stok, pesanan pelanggan, dan dashboard admin panel yang komprehensif.'},en:{nav_home:'Home',nav_about:'About',nav_skills:'Skills',nav_projects:'Projects',nav_contact:'Contact',skills_title:'Skills & Technologies',hero_greet:"Hi, I'm",hero_cta:'Need a website?',about_title:'About Me',about_edu:'Education',about_cv:'Download CV',about_exp:'Experience',view_detail:'View Detail',contact_title:'Contact',contact_subtitle:'Send Direct Message',contact_name:'Full Name',contact_email:'Email',contact_message:'Message',contact_btn:'Send Message',contact_info:'Other Info',toast_wa:'Redirecting to WhatsApp...',project_title:'Projects',ipk_label:'Cumulative Grade Point Average (GPA)',ipk_value:'Final Grade: 3.44 out of 4.00',hero_desc:'Information Systems graduate with a passion for combining technology and business strategy to create efficient and impactful digital solutions.',about_edu_desc:'I am an Information Systems graduate from Yogyakarta University of Technology, where I honed my deep understanding of technology integration and business strategy.',exp_1_title:'Business Development Staff (IT Development)',exp_1_comp:'Zipzap Corporation',exp_1_date:'May 2026 - Present',exp_1_desc:'• Continued system development responsibilities from the previous role with a broader project scope.<br>• Built the Kaliber Website, Zipzap Garment Landing Page, and Kaliber Garment Landing Page using Laravel, JavaScript, and Tailwind CSS.<br>• Handled maintenance, bug fixing, and daily ad performance report input to support the marketing team.<br>• Compiled weekly progress reports as a form of cross-team coordination.',exp_2_title:'IT Developer',exp_2_comp:'Zipzap Corporation - Maganghub Kemnaker',exp_2_date:'November 2025 - May 2026',exp_2_desc:'• Developed and maintained a web-based employee attendance system to monitor attendance in real-time, replacing a third-party attendance service and saving approximately IDR 2,000,000/year in operational costs.<br>• Designed and built 3 internal tools for the Customer Service team (product price calculator, screen-printing cost calculator, fabric stock checker) that reduced customer response time from 5+ minutes to under 1 minute.<br>• Built a Gemini AI-based ad reporting system that automates data extraction from daily report screenshots, replacing the marketing team manual input process.<br>• Managed and optimized business landing pages to support the company digital marketing campaigns.<br>• Performed regular maintenance, bug fixing, and system performance optimization.',project_desc_top:'Here are some projects I have developed. These projects demonstrate my ability to apply various technologies.',project_1_desc:'Company profile website for a convection business equipped with a dynamic admin panel for content and catalog management.',project_2_desc:'Special offer page for t-shirt products with conversion optimization, responsive design, and high performance.',project_3_desc:'Landing page for polo shirt products focusing on user experience and access speed to increase closing rates.',project_4_desc:'T-shirt landing page project for Kaliber Garment brand with a modern design using full coding techniques for SEO optimization.',project_5_desc:'Exclusive landing page for Kaliber Garment polo products with an efficient order form integration.',project_6_desc:'Web application for automatic DISC psychological test score calculation, assisting HR teams in personality analysis.',project_7_desc:'Product warranty claim management system integrated with a database for systematic product authenticity validation.',project_8_desc:'Collection of internal tools like price calculators and message template generators to speed up CS team workflow.',project_9_desc:'Internal platform for employee attendance management and automated web-based payroll calculation.',project_10_desc:'Comprehensive E-commerce system with stock management features, customer orders, and an admin panel dashboard.'}};
+        let currentLang=localStorage.getItem('lang')||'id';
+        function changeLang(l){currentLang=l;localStorage.setItem('lang',l);document.documentElement.setAttribute('lang',l);document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');if(translations[l][k])e.innerHTML=translations[l][k]});updateLangUI()}
+        function updateLangUI(){const i=document.getElementById('lang-indicator'),bi=document.getElementById('lang-id'),be=document.getElementById('lang-en');if(currentLang==='id'){i.style.left='0.125rem';bi.classList.add('text-white');bi.classList.remove('text-gray-400');be.classList.remove('text-white');be.classList.add('text-gray-400')}else{i.style.left=window.innerWidth>=768?'2rem':'1.5rem';be.classList.add('text-white');be.classList.remove('text-gray-400');bi.classList.remove('text-white');bi.classList.add('text-gray-400')}}
+        const tBtn=document.getElementById('theme-toggle');if(localStorage.getItem('color-theme')==='dark'||(!('color-theme' in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}
+        tBtn.addEventListener('click',()=>{document.documentElement.classList.toggle('dark');localStorage.setItem('color-theme',document.documentElement.classList.contains('dark')?'dark':'light')});
+        document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('toast');t.classList.remove('hidden');setTimeout(()=>t.classList.remove('opacity-0','translate-y-[-20px]'),10);const n=document.getElementById('name').value,em=document.getElementById('email').value,m=document.getElementById('message').value;const u=`https://wa.me/6282244912640?text=Nama: ${n}%0AEmail: ${em}%0APesan: ${m}`;setTimeout(()=>{window.open(u,'_blank');t.classList.add('opacity-0','translate-y-[-20px]');setTimeout(()=>t.classList.add('hidden'),300)},1500)});
+        function openProjectModal(im,t){const img=document.getElementById('modal-project-img');img.src=im;img.alt=t;document.getElementById('modal-project-title').innerText=t;document.getElementById('project-image-modal').classList.remove('hidden','flex');document.getElementById('project-image-modal').classList.add('flex');document.body.style.overflow='hidden'}
+        function closeProjectModal(){document.getElementById('project-image-modal').classList.add('hidden');document.body.style.overflow='auto'}
+        function openCertModal(id,t){const img=document.getElementById('modal-cert-img');img.src=`assets/images/sertifikat/${id}.jpg`;img.alt=t;document.getElementById('modal-cert-title').innerText=t;document.getElementById('cert-modal').classList.remove('hidden');document.getElementById('cert-modal').classList.add('flex');document.body.style.overflow='hidden'}
+        function closeCertModal(){document.getElementById('cert-modal').classList.add('hidden');document.body.style.overflow='auto'}
+        document.getElementById('year').textContent=new Date().getFullYear();changeLang(currentLang);window.addEventListener('resize',updateLangUI);
+        const pS=document.getElementById('project-slider');let isPD=false,pSX,pSL;if(pS){pS.addEventListener('mousedown',e=>{isPD=true;pSX=e.pageX-pS.offsetLeft;pSL=pS.scrollLeft});pS.addEventListener('mouseleave',()=>isPD=false);pS.addEventListener('mouseup',()=>isPD=false);pS.addEventListener('mousemove',e=>{if(!isPD)return;e.preventDefault();const x=e.pageX-pS.offsetLeft;pS.scrollLeft=pSL-(x-pSX)*2})}
+        const cS=document.getElementById('cert-slider');let isCD=false,cSX,cSL;if(cS){cS.addEventListener('mousedown',e=>{isCD=true;cSX=e.pageX-cS.offsetLeft;cSL=cS.scrollLeft});cS.addEventListener('mouseleave',()=>isCD=false);cS.addEventListener('mouseup',()=>isCD=false);cS.addEventListener('mousemove',e=>{if(!isCD)return;e.preventDefault();const x=e.pageX-cS.offsetLeft;cS.scrollLeft=cSL-(x-cSX)*2})}
+        function showPrivateNotice(){alert("Pihak tersebut tidak mengizinkan menampilkan link-nya")}
+    </script>
+</body>
+</html>
