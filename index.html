@@ -102,6 +102,85 @@
             box-shadow: 0 20px 25px -5px color-mix(in srgb, var(--brand, #4b5563) 70%, transparent),
                         0 8px 10px -6px color-mix(in srgb, var(--brand, #4b5563) 70%, transparent);
         }
+
+        /* Hero availability badge */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 9999px;
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+        }
+        .dark .hero-badge { background: rgba(20, 83, 45, 0.2); border-color: #15803d; }
+        .hero-badge-label { font-size: 0.875rem; font-weight: 600; color: #15803d; }
+        .dark .hero-badge-label { color: #4ade80; }
+        .hero-badge-dot { position: relative; display: inline-flex; width: 0.625rem; height: 0.625rem; flex-shrink: 0; }
+        .hero-badge-dot::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: #4ade80;
+            opacity: 0.75;
+            animation: heroBadgePing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        .hero-badge-dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: #22c55e;
+        }
+        @keyframes heroBadgePing {
+            75%, 100% { transform: scale(2.2); opacity: 0; }
+        }
+
+        /* Services section */
+        .services-container { max-width: 72rem; }
+        .services-subtitle { max-width: 42rem; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        .service-card { transition: transform 0.3s ease; }
+        .service-card:hover { transform: translateY(-4px); }
+        .service-icon { width: 3rem; height: 3rem; }
+        .service-points { padding-top: 0.5rem; }
+        .service-points li + li { margin-top: 0.5rem; }
+        .service-icon-blue { background: #dbeafe; }
+        .dark .service-icon-blue { background: rgba(30, 58, 138, 0.3); }
+        .service-icon-blue i { color: #2563eb; }
+        .dark .service-icon-blue i { color: #60a5fa; }
+        .service-icon-fuchsia { background: #fae8ff; }
+        .dark .service-icon-fuchsia { background: rgba(112, 26, 117, 0.3); }
+        .service-icon-fuchsia i { color: #c026d3; }
+        .dark .service-icon-fuchsia i { color: #e879f9; }
+        .service-icon-cyan { background: #cffafe; }
+        .dark .service-icon-cyan { background: rgba(22, 78, 99, 0.3); }
+        .service-icon-cyan i { color: #0891b2; }
+        .dark .service-icon-cyan i { color: #22d3ee; }
+        .service-check-blue { color: #2563eb; }
+        .dark .service-check-blue { color: #60a5fa; }
+        .service-check-fuchsia { color: #c026d3; }
+        .dark .service-check-fuchsia { color: #e879f9; }
+        .service-check-cyan { color: #0891b2; }
+        .dark .service-check-cyan { color: #22d3ee; }
+
+        /* Experience timeline (cyan variant not available in compiled build) */
+        .exp-dot-cyan { background: #0891b2; }
+        .exp-badge-cyan { background: #ecfeff; color: #0e7490; }
+        .dark .exp-badge-cyan { background: rgba(22, 78, 99, 0.3); color: #22d3ee; }
+
+        /* Featured project cards */
+        .featured-card { box-shadow: 0 0 0 2px #3b82f6, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); }
+        .featured-badge-pos { position: absolute; top: 0.5rem; left: 0.5rem; }
     </style>
 </head>
 
@@ -113,6 +192,7 @@
             <div class="flex items-center space-x-2 md:space-x-6 text-[10px] md:text-base">
                 <a href="#home" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_home">Beranda</a>
                 <a href="#about" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_about">Tentang</a>
+                <a href="#services" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_services">Layanan</a>
                 <a href="#skills" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_skills">Skill</a>
                 <a href="#projects" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_projects">Proyek</a>
                 <a href="#contact" class="text-gray-800 dark:text-gray-200 hover:scale-105 hover:text-blue-600 dark:hover:text-purple-700 transition dark:transition" data-i18n="nav_contact">Kontak</a>
@@ -141,12 +221,17 @@
         <div class="container mx-auto px-4 md:px-8 flex items-start md:items-center justify-center">
             <div class="flex flex-col md:flex-row w-full max-w-7xl items-center">
                 <div class="w-full md:w-7/12 p-4 md:p-8 order-2 md:order-1 text-center md:text-left">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        <span class="hero-badge-label" data-i18n="hero_status">Tersedia untuk Proyek Freelance</span>
+                    </div>
                     <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 dark:text-white leading-tight">
-                        <span data-i18n="hero_greet">Halo, Saya</span> 
+                        <span data-i18n="hero_greet">Halo, Saya</span>
                         <span class="hero-gradient">Refin Izmi Abiyuna</span>
                     </h1>
+                    <p class="mt-2 text-xl font-semibold text-gray-700 dark:text-gray-300" data-i18n="hero_role">Web Developer & Automation Specialist</p>
                     <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 text-justify" data-i18n="hero_desc">Lulusan Sistem Informasi...</p>
-                    <a href="#contact" class="mt-8 inline-block px-8 py-3 bg-blue-700 text-white font-semibold rounded-full hover:scale-105 hover:bg-purple-700 transition duration-300" data-i18n="hero_cta">Mau buat website?</a>
+                    <a href="https://wa.me/6282244912640?text=Halo%20Refin%2C%20saya%20tertarik%20untuk%20diskusi%20proyek%20website%2Fsistem." target="_blank" rel="noopener noreferrer" class="mt-8 inline-block px-8 py-3 bg-blue-700 text-white font-semibold rounded-full hover:scale-105 hover:bg-purple-700 transition duration-300" data-i18n="hero_cta">Konsultasi Proyek Gratis</a>
                 </div>
                 <div class="w-full md:w-5/12 p-4 md:p-8 order-1 md:order-2 relative">
                     <img src="assets/images/profil/fotoporto.png" alt="Refin Izmi Abiyuna - Profil" width="400" height="400" class="w-full h-auto object-cover rounded-3xl lg:rounded-[4rem] mx-auto z-10 relative -mt-4 md:-mt-40 mb-[-10px] md:mb-[-30px]" loading="eager" decoding="async" fetchpriority="high">
@@ -313,17 +398,69 @@
                         </div>
                     </div>
                     <!-- Exp 2 -->
-                    <div class="ml-6 md:ml-12 relative">
-                        <div class="absolute -left-[31px] md:-left-[55px] mt-1.5 w-4 h-4 rounded-full bg-cyan-600 border-4 border-white dark:border-gray-950 shadow-md"></div>
+                    <div class="mb-12 ml-6 md:ml-12 relative">
+                        <div class="absolute -left-[31px] md:-left-[55px] mt-1.5 w-4 h-4 rounded-full exp-dot-cyan border-4 border-white dark:border-gray-950 shadow-md"></div>
                         <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
                             <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
                                 <h4 class="text-xl font-bold text-gray-800 dark:text-white" data-i18n="exp_2_title">IT Developer</h4>
-                                <span class="text-sm font-semibold text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/30 px-3 py-1 rounded-full w-fit mt-2 md:mt-0" data-i18n="exp_2_date">November 2025 - Mei 2026</span>
+                                <span class="text-sm font-semibold exp-badge-cyan px-3 py-1 rounded-full w-fit mt-2 md:mt-0" data-i18n="exp_2_date">November 2025 - Mei 2026</span>
                             </div>
                             <p class="text-lg font-medium text-gray-600 dark:text-gray-400 mb-4" data-i18n="exp_2_comp">Zipzap Corporation - Maganghub Kemnaker</p>
                             <p class="text-gray-600 dark:text-gray-400 text-justify leading-relaxed" data-i18n="exp_2_desc">Deskripsi...</p>
                         </div>
                     </div>
+                    <!-- Exp 3 -->
+                    <div class="ml-6 md:ml-12 relative">
+                        <div class="absolute -left-[31px] md:-left-[55px] mt-1.5 w-4 h-4 rounded-full bg-fuchsia-600 border-4 border-white dark:border-gray-950 shadow-md"></div>
+                        <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                <h4 class="text-xl font-bold text-gray-800 dark:text-white" data-i18n="exp_3_title">Praktik Lapangan Tugas Akhir</h4>
+                                <span class="text-sm font-semibold text-fuchsia-600 dark:text-fuchsia-400 bg-fuchsia-50 dark:bg-fuchsia-900/30 px-3 py-1 rounded-full w-fit mt-2 md:mt-0" data-i18n="exp_3_date">Agustus 2024 - Mei 2025</span>
+                            </div>
+                            <p class="text-lg font-medium text-gray-600 dark:text-gray-400 mb-4" data-i18n="exp_3_comp">PT. Bubejo Makmur Sejahtera</p>
+                            <p class="text-gray-600 dark:text-gray-400 text-justify leading-relaxed" data-i18n="exp_3_desc">Deskripsi...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2.5: SERVICES -->
+    <section id="services" class="py-12 md:py-20 bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 md:px-8 services-container">
+            <h2 class="text-4xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-cyan-400" data-i18n="services_title">Layanan Saya</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 services-subtitle mx-auto mb-12 text-center" data-i18n="services_subtitle">Solusi digital yang saya tawarkan, disesuaikan dengan kebutuhan bisnis Anda.</p>
+            <div class="services-grid">
+                <div class="service-card bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 p-6 flex flex-col">
+                    <div class="service-icon service-icon-blue rounded-xl flex items-center justify-center mb-4"><i class="fas fa-globe text-2xl"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="service_1_title">Landing Page & Website Profil Bisnis</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm text-justify leading-relaxed mb-4" data-i18n="service_1_desc">Website modern, cepat, dan responsif dari nol untuk menunjang kebutuhan pemasaran bisnis Anda.</p>
+                    <ul class="service-points mt-auto">
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-blue mt-1 flex-shrink-0"></i><span data-i18n="service_1_point_1">Desain Modern, Responsive, & Fast-Loading (Tampilan optimal di HP & Laptop).</span></li>
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-blue mt-1 flex-shrink-0"></i><span data-i18n="service_1_point_2">Fokus Konversi dengan integrasi tombol WhatsApp / form kontak langsung.</span></li>
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-blue mt-1 flex-shrink-0"></i><span data-i18n="service_1_point_3">Struktur Clean Code & SEO-Friendly agar lebih mudah ditemukan di Google.</span></li>
+                    </ul>
+                </div>
+                <div class="service-card bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 p-6 flex flex-col">
+                    <div class="service-icon service-icon-fuchsia rounded-xl flex items-center justify-center mb-4"><i class="fas fa-sitemap text-2xl"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="service_2_title">Custom Web Application & Sistem Informasi</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm text-justify leading-relaxed mb-4" data-i18n="service_2_desc">Aplikasi web kustom dari nol yang dibangun presisi sesuai aturan dan kebutuhan unik bisnis Anda.</p>
+                    <ul class="service-points mt-auto">
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-fuchsia mt-1 flex-shrink-0"></i><span data-i18n="service_2_point_1">Custom Business Logic (100% menyesuaikan alur & aturan bisnis Anda).</span></li>
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-fuchsia mt-1 flex-shrink-0"></i><span data-i18n="service_2_point_2">Pengelolaan database terpusat dengan Pengaturan Hak Akses Berjenjang (Multi-Level Access).</span></li>
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-fuchsia mt-1 flex-shrink-0"></i><span data-i18n="service_2_point_3">Dashboard visual interaktif untuk pemantauan data & laporan secara real-time.</span></li>
+                    </ul>
+                </div>
+                <div class="service-card bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 p-6 flex flex-col">
+                    <div class="service-icon service-icon-cyan rounded-xl flex items-center justify-center mb-4"><i class="fas fa-bolt text-2xl"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="service_3_title">Automasi Bisnis & Tools Produktivitas</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm text-justify leading-relaxed mb-4" data-i18n="service_3_desc">Tools produktivitas kustom untuk memangkas proses manual dan meningkatkan efisiensi kerja harian.</p>
+                    <ul class="service-points mt-auto">
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-cyan mt-1 flex-shrink-0"></i><span data-i18n="service_3_point_1">Tools Akselerasi Tim (Memotong waktu kerja operasional & Customer Service).</span></li>
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-cyan mt-1 flex-shrink-0"></i><span data-i18n="service_3_point_2">Portal Mandiri Pelanggan (Self-Service Portal & form input terintegrasi).</span></li>
+                        <li class="flex items-start space-x-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check service-check-cyan mt-1 flex-shrink-0"></i><span data-i18n="service_3_point_3">Otomatisasi pengiriman notifikasi/email & rekapitulasi laporan harian.</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -366,6 +503,65 @@
             </p>
             <div class="relative">
                 <div id="project-slider" class="flex space-x-4 p-4 overflow-x-scroll pb-6 scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent cursor-grab active:cursor-grabbing select-none">
+                    <!-- Featured: Web Tools CS -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px] featured-card">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer relative" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/webtoolscs.png', 'Web Tools CS Zipzap')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <span class="featured-badge-pos z-10 text-xs font-bold px-2 py-1 rounded-full bg-blue-600 text-white" data-i18n="featured_badge">Unggulan</span>
+                            <img src="assets/images/projek/webtoolscs.png" alt="Web Tools CS Zipzap - Refin Izmi Abiyuna" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Web Tools Customer Service Zipzap</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_8_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://zipzap.co.id/tools/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Featured: SI Absensi -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px] featured-card">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer relative" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/SIabsensi.png', 'SI Absensi & Gaji')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <span class="featured-badge-pos z-10 text-xs font-bold px-2 py-1 rounded-full bg-blue-600 text-white" data-i18n="featured_badge">Unggulan</span>
+                            <img src="assets/images/projek/SIabsensi.png" alt="Sistem Informasi Absensi - Refin Izmi Abiyuna" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Sistem Informasi Absensi & Gaji</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_9_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <button onclick="showPrivateNotice()" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-red-500 transition duration-200 group"><i class="fas fa-lock text-xl group-hover:shake transition-transform"></i><span class="text-sm font-semibold">Demo</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Featured: Cryon Warranty System -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px] featured-card">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer relative" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/cryon.png', 'Cryon Warranty System')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <span class="featured-badge-pos z-10 text-xs font-bold px-2 py-1 rounded-full bg-blue-600 text-white" data-i18n="featured_badge">Unggulan</span>
+                            <img src="assets/images/projek/cryon.png" alt="Cryon Warranty System - Refin Izmi Abiyuna" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Cryon Warranty System</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_7_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <button onclick="showPrivateNotice()" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-red-500 transition duration-200 group"><i class="fas fa-lock text-xl group-hover:shake transition-transform"></i><span class="text-sm font-semibold">Demo</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 6 -->
+                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
+                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/skoringdisc.png', 'Tools Skoring DISC')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                            <img src="assets/images/projek/skoringdisc.png" alt="Tools Skoring DISC - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Tools Skoring DISC Zipzap</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_6_desc">Deskripsi...</p>
+                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
+                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
+                                <a href="https://zipzap.co.id/test-disc/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Project 1 -->
                     <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
                         <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/webzipzap.png', 'Landing Page & Admin Panel Zipzap')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
@@ -433,62 +629,6 @@
                             <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
                                 <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
                                 <a href="https://zipzap.co.id/landing-page-polo-full-coding/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 6 -->
-                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
-                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/skoringdisc.png', 'Tools Skoring DISC')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
-                            <img src="assets/images/projek/skoringdisc.png" alt="Tools Skoring DISC - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Tools Skoring DISC Zipzap</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_6_desc">Deskripsi...</p>
-                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
-                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
-                                <a href="https://zipzap.co.id/test-disc/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 7 -->
-                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
-                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/cryon.png', 'Cryon Warranty System')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
-                            <img src="assets/images/projek/cryon.png" alt="Cryon Warranty System - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Cryon Warranty System</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_7_desc">Deskripsi...</p>
-                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
-                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
-                                <button onclick="showPrivateNotice()" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-red-500 transition duration-200 group"><i class="fas fa-lock text-xl group-hover:shake transition-transform"></i><span class="text-sm font-semibold">Demo</span></button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 8 -->
-                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
-                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/webtoolscs.png', 'Web Tools CS Zipzap')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
-                            <img src="assets/images/projek/webtoolscs.png" alt="Web Tools CS Zipzap - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Web Tools Customer Service Zipzap</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_8_desc">Deskripsi...</p>
-                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
-                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
-                                <a href="https://zipzap.co.id/tools/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-400 transition duration-200 group"><i class="fas fa-external-link-alt text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i><span class="text-sm font-semibold">Demo</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 9 -->
-                    <div class="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex flex-col h-[520px]">
-                        <div class="h-48 overflow-hidden flex-shrink-0 cursor-pointer" role="button" tabindex="0" onclick="openProjectModal('assets/images/projek/SIabsensi.png', 'SI Absensi & Gaji')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
-                            <img src="assets/images/projek/SIabsensi.png" alt="Sistem Informasi Absensi - Refin Izmi Abiyuna" class="w-full h-auto object-cover transition-transform duration-300 hover:scale-110" loading="lazy" decoding="async">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white line-clamp-2 min-h-[56px]">Sistem Informasi Absensi & Gaji</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm text-justify leading-relaxed line-clamp-5 flex-grow" data-i18n="project_9_desc">Deskripsi...</p>
-                            <div class="hidden flex justify-start space-x-6 border-t pt-4 border-gray-200 dark:border-gray-800 mt-auto">
-                                <a href="#" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition duration-200 group"><i class="fab fa-github text-2xl group-hover:rotate-12 transition-transform"></i><span class="text-sm font-semibold">Github</span></a>
-                                <button onclick="showPrivateNotice()" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-red-500 transition duration-200 group"><i class="fas fa-lock text-xl group-hover:shake transition-transform"></i><span class="text-sm font-semibold">Demo</span></button>
                             </div>
                         </div>
                     </div>
@@ -579,7 +719,7 @@
     </script>
 
     <!-- MAIN JAVASCRIPT LOGIC -->    <script>
-        const translations={id:{nav_home:'Beranda',nav_about:'Tentang',nav_skills:'Skill',nav_projects:'Proyek',nav_contact:'Kontak',skills_title:'Skill & Teknologi',hero_greet:'Halo, Saya',hero_cta:'Mau buat website?',about_title:'Tentang Saya',about_edu:'Pendidikan',about_cv:'Download CV',about_exp:'Pengalaman',view_detail:'Lihat Detail',contact_title:'Kontak',contact_subtitle:'Kirim Pesan Langsung',contact_name:'Nama Lengkap',contact_email:'Email',contact_message:'Pesan',contact_btn:'Kirim Pesan',contact_info:'Informasi Lain',toast_wa:'Mengarahkan ke WhatsApp...',project_title:'Proyek',ipk_label:'Indeks Prestasi Kumulatif (IPK)',ipk_value:'Nilai Akhir: 3.44 dari 4.00',hero_desc:'Lulusan Sistem Informasi yang memiliki semangat penuh dalam menggabungkan teknologi dan strategi bisnis untuk menciptakan solusi digital yang efisien dan berdampak.',about_edu_desc:'Saya adalah lulusan Sistem Informasi dari Universitas Teknologi Yogyakarta, tempat saya mengasah pemahaman mendalam tentang integrasi teknologi dan strategi bisnis.',exp_1_title:'Staff Business Development (IT Development)',exp_1_comp:'Zipzap Corporation',exp_1_date:'Mei 2026 - Sekarang',exp_1_desc:'• Melanjutkan tanggung jawab pengembangan sistem dari posisi sebelumnya dengan cakupan proyek yang lebih luas.<br>• Membangun Website Kaliber, Landing Page Zipzap Garment, dan Landing Page Kaliber Garment menggunakan Laravel, JavaScript, dan Tailwind CSS.<br>• Menangani maintenance, bug fixing, dan input laporan performa iklan harian untuk mendukung tim marketing.<br>• Menyusun laporan progres mingguan sebagai bentuk koordinasi lintas tim.',exp_2_title:'IT Developer',exp_2_comp:'Zipzap Corporation - Maganghub Kemnaker',exp_2_date:'November 2025 - Mei 2026',exp_2_desc:'• Mengembangkan dan memelihara sistem absensi karyawan berbasis web untuk memantau kehadiran secara real-time, menggantikan layanan absensi pihak ketiga dan menghemat biaya operasional ±Rp2.000.000/tahun.<br>• Merancang dan membangun 3 internal tools untuk tim Customer Service (kalkulator harga produk, kalkulator printing sablon, cek stok kain) yang mempercepat waktu respons ke pelanggan dari 5+ menit menjadi kurang dari 1 menit.<br>• Membangun sistem pelaporan iklan berbasis Gemini AI yang mengotomasi ekstraksi data dari screenshot laporan harian, menggantikan proses input manual tim marketing.<br>• Mengelola dan mengoptimalkan landing page bisnis untuk mendukung kampanye pemasaran digital perusahaan.<br>• Melakukan maintenance, bug fixing, dan optimasi performa sistem secara berkala.',project_desc_top:'Berikut adalah beberapa proyek yang telah saya kembangkan. Proyek-proyek ini menunjukkan kemampuan saya dalam menerapkan berbagai teknologi.',project_1_desc:'Website profil perusahaan konveksi yang dilengkapi dengan sistem admin panel untuk pengelolaan konten dan katalog produk secara dinamis.',project_2_desc:'Halaman penawaran khusus untuk produk kaos dengan optimasi konversi, desain responsif, dan performa tinggi.',project_3_desc:'Halaman landing untuk produk polo shirt yang fokus pada user experience dan kecepatan akses untuk meningkatkan closing rate.',project_4_desc:'Proyek landing page kaos untuk brand Kaliber Garment dengan desain modern menggunakan teknik full coding untuk optimasi SEO.',project_5_desc:'Landing page eksklusif untuk produk polo Kaliber Garment dengan integrasi formulir pemesanan yang efisien.',project_6_desc:'Aplikasi web untuk perhitungan skor psikotes DISC secara otomatis, memudahkan tim HR dalam analisis kepribadian karyawan.',project_7_desc:'Sistem manajemen klaim garansi produk yang terintegrasi dengan database untuk validasi keaslian produk secara sistematis.',project_8_desc:'Kumpulan alat bantu internal seperti kalkulator harga dan generator template pesan untuk mempercepat alur kerja tim CS.',project_9_desc:'Platform internal untuk manajemen kehadiran karyawan dan penghitungan payroll otomatis berbasis web.',project_10_desc:'Sistem E-commerce lengkap dengan fitur manajemen stok, pesanan pelanggan, dan dashboard admin panel yang komprehensif.'},en:{nav_home:'Home',nav_about:'About',nav_skills:'Skills',nav_projects:'Projects',nav_contact:'Contact',skills_title:'Skills & Technologies',hero_greet:"Hi, I'm",hero_cta:'Need a website?',about_title:'About Me',about_edu:'Education',about_cv:'Download CV',about_exp:'Experience',view_detail:'View Detail',contact_title:'Contact',contact_subtitle:'Send Direct Message',contact_name:'Full Name',contact_email:'Email',contact_message:'Message',contact_btn:'Send Message',contact_info:'Other Info',toast_wa:'Redirecting to WhatsApp...',project_title:'Projects',ipk_label:'Cumulative Grade Point Average (GPA)',ipk_value:'Final Grade: 3.44 out of 4.00',hero_desc:'Information Systems graduate with a passion for combining technology and business strategy to create efficient and impactful digital solutions.',about_edu_desc:'I am an Information Systems graduate from Yogyakarta University of Technology, where I honed my deep understanding of technology integration and business strategy.',exp_1_title:'Business Development Staff (IT Development)',exp_1_comp:'Zipzap Corporation',exp_1_date:'May 2026 - Present',exp_1_desc:'• Continued system development responsibilities from the previous role with a broader project scope.<br>• Built the Kaliber Website, Zipzap Garment Landing Page, and Kaliber Garment Landing Page using Laravel, JavaScript, and Tailwind CSS.<br>• Handled maintenance, bug fixing, and daily ad performance report input to support the marketing team.<br>• Compiled weekly progress reports as a form of cross-team coordination.',exp_2_title:'IT Developer',exp_2_comp:'Zipzap Corporation - Maganghub Kemnaker',exp_2_date:'November 2025 - May 2026',exp_2_desc:'• Developed and maintained a web-based employee attendance system to monitor attendance in real-time, replacing a third-party attendance service and saving approximately IDR 2,000,000/year in operational costs.<br>• Designed and built 3 internal tools for the Customer Service team (product price calculator, screen-printing cost calculator, fabric stock checker) that reduced customer response time from 5+ minutes to under 1 minute.<br>• Built a Gemini AI-based ad reporting system that automates data extraction from daily report screenshots, replacing the marketing team manual input process.<br>• Managed and optimized business landing pages to support the company digital marketing campaigns.<br>• Performed regular maintenance, bug fixing, and system performance optimization.',project_desc_top:'Here are some projects I have developed. These projects demonstrate my ability to apply various technologies.',project_1_desc:'Company profile website for a convection business equipped with a dynamic admin panel for content and catalog management.',project_2_desc:'Special offer page for t-shirt products with conversion optimization, responsive design, and high performance.',project_3_desc:'Landing page for polo shirt products focusing on user experience and access speed to increase closing rates.',project_4_desc:'T-shirt landing page project for Kaliber Garment brand with a modern design using full coding techniques for SEO optimization.',project_5_desc:'Exclusive landing page for Kaliber Garment polo products with an efficient order form integration.',project_6_desc:'Web application for automatic DISC psychological test score calculation, assisting HR teams in personality analysis.',project_7_desc:'Product warranty claim management system integrated with a database for systematic product authenticity validation.',project_8_desc:'Collection of internal tools like price calculators and message template generators to speed up CS team workflow.',project_9_desc:'Internal platform for employee attendance management and automated web-based payroll calculation.',project_10_desc:'Comprehensive E-commerce system with stock management features, customer orders, and an admin panel dashboard.'}};
+        const translations={id:{nav_home:'Beranda',nav_about:'Tentang',nav_services:'Layanan',featured_badge:'Unggulan',nav_skills:'Skill',nav_projects:'Proyek',nav_contact:'Kontak',skills_title:'Skill & Teknologi',hero_greet:'Halo, Saya',hero_status:'Tersedia untuk Proyek Freelance',hero_role:'Web Developer & Automation Specialist',hero_cta:'Konsultasi Proyek Gratis',services_title:'Layanan Saya',services_subtitle:'Solusi digital yang saya tawarkan, disesuaikan dengan kebutuhan bisnis Anda.',service_1_title:'Landing Page & Website Profil Bisnis',service_1_desc:'Website modern, cepat, dan responsif dari nol untuk menunjang kebutuhan pemasaran bisnis Anda.',service_1_point_1:'Desain Modern, Responsive, & Fast-Loading (Tampilan optimal di HP & Laptop).',service_1_point_2:'Fokus Konversi dengan integrasi tombol WhatsApp / form kontak langsung.',service_1_point_3:'Struktur Clean Code & SEO-Friendly agar lebih mudah ditemukan di Google.',service_2_title:'Custom Web Application & Sistem Informasi',service_2_desc:'Aplikasi web kustom dari nol yang dibangun presisi sesuai aturan dan kebutuhan unik bisnis Anda.',service_2_point_1:'Custom Business Logic (100% menyesuaikan alur & aturan bisnis Anda).',service_2_point_2:'Pengelolaan database terpusat dengan Pengaturan Hak Akses Berjenjang (Multi-Level Access).',service_2_point_3:'Dashboard visual interaktif untuk pemantauan data & laporan secara real-time.',service_3_title:'Automasi Bisnis & Tools Produktivitas',service_3_desc:'Tools produktivitas kustom untuk memangkas proses manual dan meningkatkan efisiensi kerja harian.',service_3_point_1:'Tools Akselerasi Tim (Memotong waktu kerja operasional & Customer Service).',service_3_point_2:'Portal Mandiri Pelanggan (Self-Service Portal & form input terintegrasi).',service_3_point_3:'Otomatisasi pengiriman notifikasi/email & rekapitulasi laporan harian.',about_title:'Tentang Saya',about_edu:'Pendidikan',about_cv:'Download CV',about_exp:'Pengalaman',view_detail:'Lihat Detail',contact_title:'Kontak',contact_subtitle:'Kirim Pesan Langsung',contact_name:'Nama Lengkap',contact_email:'Email',contact_message:'Pesan',contact_btn:'Kirim Pesan',contact_info:'Informasi Lain',toast_wa:'Mengarahkan ke WhatsApp...',project_title:'Proyek',ipk_label:'Indeks Prestasi Kumulatif (IPK)',ipk_value:'Nilai Akhir: 3.44 dari 4.00',hero_desc:'Saya bantu bisnis & UMKM membangun website fast-loading, landing page berkonversi tinggi, dan sistem internal otomatis yang menghemat waktu & biaya operasional.',about_edu_desc:'Saya adalah lulusan Sistem Informasi dari Universitas Teknologi Yogyakarta, tempat saya mengasah pemahaman mendalam tentang integrasi teknologi dan strategi bisnis.',exp_1_title:'Staff Business Development (IT Development)',exp_1_comp:'Zipzap Corporation',exp_1_date:'Mei 2026 - Sekarang',exp_1_desc:'• Melanjutkan tanggung jawab pengembangan sistem dari posisi sebelumnya dengan cakupan proyek yang lebih luas.<br>• Membangun Website Kaliber, Landing Page Zipzap Garment, dan Landing Page Kaliber Garment menggunakan Laravel, JavaScript, dan Tailwind CSS.<br>• Menangani maintenance, bug fixing, dan input laporan performa iklan harian untuk mendukung tim marketing.<br>• Menyusun laporan progres mingguan sebagai bentuk koordinasi lintas tim.',exp_2_title:'IT Developer',exp_2_comp:'Zipzap Corporation - Maganghub Kemnaker',exp_2_date:'November 2025 - Mei 2026',exp_2_desc:'• Mengembangkan dan memelihara sistem absensi karyawan berbasis web untuk memantau kehadiran secara real-time, menggantikan layanan pihak ketiga dan menghemat biaya operasional hingga ±Rp2.000.000/tahun.<br>• Merancang dan membangun 3 internal tools tim Customer Service (kalkulator harga, kalkulator sablon, cek stok kain) yang mempercepat waktu respons ke pelanggan dari 5+ menit menjadi kurang dari 1 menit.<br>• Membangun sistem pelaporan iklan berbasis Gemini AI yang mengotomasi ekstraksi data dari screenshot laporan harian, menggantikan proses input manual tim marketing.<br>• Mengelola dan mengoptimalkan landing page bisnis untuk mendukung kampanye pemasaran digital perusahaan.<br>• Melakukan maintenance, bug fixing, dan optimasi performa sistem secara berkala.',exp_3_title:'Praktik Lapangan Tugas Akhir',exp_3_comp:'PT. Bubejo Makmur Sejahtera',exp_3_date:'Agustus 2024 - Mei 2025',exp_3_desc:'• Melakukan analisis kebutuhan sistem bisnis untuk merancang solusi Sistem Informasi Penjualan berbasis web.<br>• Mengembangkan full-stack sistem menggunakan PHP/Laravel dan MySQL untuk manajemen produk, pesanan, dan laporan penjualan.<br>• Integrasi Third-Party API RajaOngkir (ongkir) dan Midtrans (payment gateway).<br>• Berhasil meningkatkan efisiensi sistem sebesar 82%.',project_desc_top:'Kumpulan proyek pilihan yang berfokus pada efisiensi operasional bisnis, optimasi konversi penjualan, dan otomatisasi sistem internal.',project_1_desc:'Website profil perusahaan konveksi yang dilengkapi dengan sistem admin panel untuk pengelolaan konten dan katalog produk secara dinamis.',project_2_desc:'Halaman penawaran khusus untuk produk kaos dengan optimasi konversi, desain responsif, dan performa tinggi.',project_3_desc:'Halaman landing untuk produk polo shirt yang fokus pada user experience dan kecepatan akses untuk meningkatkan closing rate.',project_4_desc:'Proyek landing page kaos untuk brand Kaliber Garment dengan desain modern menggunakan teknik full coding untuk optimasi SEO.',project_5_desc:'Landing page eksklusif untuk produk polo Kaliber Garment dengan integrasi formulir pemesanan yang efisien.',project_6_desc:'Aplikasi web untuk perhitungan skor psikotes DISC secara otomatis, memudahkan tim HR dalam analisis kepribadian karyawan.',project_7_desc:'Sistem klaim garansi produk otomatis end-to-end dengan keamanan proxy PHP dan integrasi Google Workspace Mail API untuk notifikasi pelanggan.',project_8_desc:'Memotong waktu respons Customer Service dari 5+ menit menjadi kurang dari 1 menit lewat 3 tools internal (kalkulator harga, kalkulator printing, cek stok kain), plus otomatisasi ekstraksi laporan performa iklan harian berbasis Gemini AI.',project_9_desc:'Sistem absensi karyawan berbasis web untuk memantau kehadiran secara real-time, menggantikan layanan pihak ketiga dan menghemat biaya operasional hingga ±Rp2.000.000/tahun.',project_10_desc:'Sistem E-commerce lengkap dengan fitur manajemen stok, pesanan pelanggan, dan dashboard admin panel yang komprehensif.'},en:{nav_home:'Home',nav_about:'About',nav_services:'Services',featured_badge:'Featured',nav_skills:'Skills',nav_projects:'Projects',nav_contact:'Contact',skills_title:'Skills & Technologies',hero_greet:"Hi, I'm",hero_status:'Available for Freelance Projects',hero_role:'Web Developer & Automation Specialist',hero_cta:'Free Project Consultation',services_title:'My Services',services_subtitle:'Digital solutions I offer, tailored to your business needs.',service_1_title:'Landing Page & Business Profile Website',service_1_desc:'Modern, fast, and responsive websites built from scratch to drive your business marketing goals.',service_1_point_1:'Modern, responsive, & fast-loading design across all devices.',service_1_point_2:'Conversion-focused with direct WhatsApp & lead-capture integration.',service_1_point_3:'Clean-code structure optimized for search engine visibility (SEO).',service_2_title:'Custom Web Application & Information Systems',service_2_desc:'Custom web applications built from scratch, precisely aligned with your unique business rules.',service_2_point_1:'100% Custom Business Logic built specifically for your operations.',service_2_point_2:'Centralized data management with Granular Role-Based Access Control (RBAC).',service_2_point_3:'Interactive visual dashboards & automated real-time reporting.',service_3_title:'Business Automation & Productivity Tools',service_3_desc:'Custom productivity tools designed to cut down manual tasks and boost daily work efficiency.',service_3_point_1:'Custom Productivity Tools to accelerate team response times & daily workflow.',service_3_point_2:'Customer Self-Service Portals & streamlined data entry forms.',service_3_point_3:'Automated email/notification triggers and instant report generation.',about_title:'About Me',about_edu:'Education',about_cv:'Download CV',about_exp:'Experience',view_detail:'View Detail',contact_title:'Contact',contact_subtitle:'Send Direct Message',contact_name:'Full Name',contact_email:'Email',contact_message:'Message',contact_btn:'Send Message',contact_info:'Other Info',toast_wa:'Redirecting to WhatsApp...',project_title:'Projects',ipk_label:'Cumulative Grade Point Average (GPA)',ipk_value:'Final Grade: 3.44 out of 4.00',hero_desc:'I help businesses & SMEs build fast-loading websites, high-converting landing pages, and automated internal systems that save operational time & cost.',about_edu_desc:'I am an Information Systems graduate from Yogyakarta University of Technology, where I honed my deep understanding of technology integration and business strategy.',exp_1_title:'Business Development Staff (IT Development)',exp_1_comp:'Zipzap Corporation',exp_1_date:'May 2026 - Present',exp_1_desc:'• Continued software development responsibilities from the previous role with an expanded project scope.<br>• Built the Kaliber Website, Zipzap Garment Landing Page, and Kaliber Garment Landing Page using Laravel, JavaScript, and Tailwind CSS.<br>• Managed routine maintenance, bug fixes, and daily ad performance data entry to support the marketing team.<br>• Compiled weekly progress reports to maintain cross-team alignment.',exp_2_title:'IT Developer',exp_2_comp:'Zipzap Corporation - Maganghub Kemnaker',exp_2_date:'November 2025 - May 2026',exp_2_desc:'• Developed and maintained a web-based employee attendance system for real-time tracking, replacing third-party services and saving up to ±IDR 2,000,000/year in operational costs.<br>• Designed and built 3 CS internal tools (price calculator, screen printing calculator, fabric stock checker) that reduced response time from 5+ minutes to under 1 minute.<br>• Built a Gemini AI-powered ad reporting system to automate data extraction from daily report screenshots, replacing manual marketing entry.<br>• Managed and optimized business landing pages to enhance digital marketing performance.<br>• Performed routine maintenance, bug fixes, and system performance optimizations.',exp_3_title:'Final Project Field Internship',exp_3_comp:'PT. Bubejo Makmur Sejahtera',exp_3_date:'August 2024 - May 2025',exp_3_desc:'• Conducted business system requirements analysis to identify operational issues and designed a web-based Sales Information System solution.<br>• Developed a full-stack system using PHP/Laravel and MySQL for product management, orders, and sales reports.<br>• Integrated Third-Party APIs: RajaOngkir (shipping costs) and Midtrans (payment gateway).<br>• Successfully improved system efficiency by 82%.',project_desc_top:'A curated selection of projects focusing on business operational efficiency, conversion rate optimization, and web-based automation.',project_1_desc:'Company profile website for a convection business equipped with a dynamic admin panel for content and catalog management.',project_2_desc:'Special offer page for t-shirt products with conversion optimization, responsive design, and high performance.',project_3_desc:'Landing page for polo shirt products focusing on user experience and access speed to increase closing rates.',project_4_desc:'T-shirt landing page project for Kaliber Garment brand with a modern design using full coding techniques for SEO optimization.',project_5_desc:'Exclusive landing page for Kaliber Garment polo products with an efficient order form integration.',project_6_desc:'Web application for automatic DISC psychological test score calculation, assisting HR teams in personality analysis.',project_7_desc:'End-to-end automated product warranty claim system with secure PHP proxy and Google Workspace Mail API integration for customer notifications.',project_8_desc:'Cut Customer Service response time from 5+ minutes to under 1 minute via 3 internal tools (price calculator, printing cost calculator, fabric stock checker), plus Gemini AI-based automated extraction of daily ad performance reports.',project_9_desc:'A web-based employee attendance system for real-time tracking, replacing third-party services and saving up to ±IDR 2,000,000/year in operational costs.',project_10_desc:'Comprehensive E-commerce system with stock management features, customer orders, and an admin panel dashboard.'}};
         let currentLang=localStorage.getItem('lang')||'id';
         function changeLang(l){currentLang=l;localStorage.setItem('lang',l);document.documentElement.setAttribute('lang',l);document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');if(translations[l][k])e.innerHTML=translations[l][k]});updateLangUI()}
         function updateLangUI(){const i=document.getElementById('lang-indicator'),bi=document.getElementById('lang-id'),be=document.getElementById('lang-en');if(currentLang==='id'){i.style.left='0.125rem';bi.classList.add('text-white');bi.classList.remove('text-gray-400');be.classList.remove('text-white');be.classList.add('text-gray-400')}else{i.style.left=window.innerWidth>=768?'2rem':'1.5rem';be.classList.add('text-white');be.classList.remove('text-gray-400');bi.classList.remove('text-white');bi.classList.add('text-gray-400')}}
@@ -593,7 +733,7 @@
         document.getElementById('year').textContent=new Date().getFullYear();changeLang(currentLang);window.addEventListener('resize',updateLangUI);
         const pS=document.getElementById('project-slider');let isPD=false,pSX,pSL;if(pS){pS.addEventListener('mousedown',e=>{isPD=true;pSX=e.pageX-pS.offsetLeft;pSL=pS.scrollLeft});pS.addEventListener('mouseleave',()=>isPD=false);pS.addEventListener('mouseup',()=>isPD=false);pS.addEventListener('mousemove',e=>{if(!isPD)return;e.preventDefault();const x=e.pageX-pS.offsetLeft;pS.scrollLeft=pSL-(x-pSX)*2})}
         const cS=document.getElementById('cert-slider');let isCD=false,cSX,cSL;if(cS){cS.addEventListener('mousedown',e=>{isCD=true;cSX=e.pageX-cS.offsetLeft;cSL=cS.scrollLeft});cS.addEventListener('mouseleave',()=>isCD=false);cS.addEventListener('mouseup',()=>isCD=false);cS.addEventListener('mousemove',e=>{if(!isCD)return;e.preventDefault();const x=e.pageX-cS.offsetLeft;cS.scrollLeft=cSL-(x-cSX)*2})}
-        function showPrivateNotice(){alert("Pihak tersebut tidak mengizinkan menampilkan link-nya")}
+        function showPrivateNotice(){alert("Tampilan demo/tautan tidak dapat dipublikasikan demi menjaga kerahasiaan data internal perusahaan (NDA).")}
     </script>
 </body>
 </html>
